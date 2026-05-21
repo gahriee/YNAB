@@ -16,12 +16,6 @@ class AuthService: ObservableObject {
         setupAuthStateListener()
     }
 
-    deinit {
-        if let listener = authStateListener {
-            Auth.auth().removeStateDidChangeListener(listener)
-        }
-    }
-
     // MARK: - Auth State
 
     private func setupAuthStateListener() {
