@@ -4,7 +4,7 @@ import Foundation
 
 struct ExportServiceTests {
     
-    @Test func testCSVGeneration() {
+    @Test @MainActor func testCSVGeneration() {
         let date = Date(timeIntervalSince1970: 1716336000) // 2024-05-22 00:00:00 UTC
         
         let tx1 = Transaction(amount: 1500.50, type: .income, categoryId: "c1", accountId: "a1", date: date, note: "Salary", isRecurring: false)
