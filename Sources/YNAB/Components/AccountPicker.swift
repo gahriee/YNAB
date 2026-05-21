@@ -43,7 +43,7 @@ struct AccountCell: View {
             if isSelected {
                 Image(systemName: "checkmark")
                     .foregroundStyle(.blue)
-                    .padding(.left, 8)
+                    .padding(.leading, 8)
             }
         }
         .padding()
