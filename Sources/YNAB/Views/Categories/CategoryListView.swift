@@ -45,7 +45,9 @@ struct CategoryListView: View {
                     }
                 }
             }
+#if os(iOS)
             .listStyle(.insetGrouped)
+#endif
             .navigationTitle("Categories")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {

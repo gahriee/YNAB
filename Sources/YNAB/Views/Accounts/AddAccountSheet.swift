@@ -46,7 +46,9 @@ struct AddAccountSheet: View {
                 }
             }
             .navigationTitle("New Account")
+#if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+#endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }

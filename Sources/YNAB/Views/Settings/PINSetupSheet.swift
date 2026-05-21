@@ -75,7 +75,9 @@ struct PINSetupSheet: View {
             }
             .padding(.top, 40)
             .navigationTitle("Setup PIN")
+#if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+#endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

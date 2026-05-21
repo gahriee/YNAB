@@ -66,7 +66,9 @@ struct AddCategorySheet: View {
                 }
             }
             .navigationTitle("New Category")
+#if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+#endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }

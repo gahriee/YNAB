@@ -41,7 +41,9 @@ struct ExportSheet: View {
                 }
             }
             .navigationTitle("Export Data")
+#if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+#endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

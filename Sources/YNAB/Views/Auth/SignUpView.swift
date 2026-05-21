@@ -62,7 +62,9 @@ struct SignUpView: View {
             Spacer()
         }
         .padding()
+#if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+#endif
     }
     
     private func signUp() async {

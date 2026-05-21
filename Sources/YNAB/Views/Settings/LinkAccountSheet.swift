@@ -87,7 +87,9 @@ struct LinkAccountSheet: View {
             }
             .padding()
             .navigationTitle("Link Email")
+#if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+#endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     if !isSuccess {

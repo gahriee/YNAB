@@ -32,7 +32,9 @@ struct AccountListView: View {
                     }
                 }
             }
+#if os(iOS)
             .listStyle(.insetGrouped)
+#endif
             .navigationTitle("Accounts")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {

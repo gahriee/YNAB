@@ -86,7 +86,9 @@ struct AddTransactionSheet: View {
                 }
             }
             .navigationTitle(isEditing ? "Edit Transaction" : "New Transaction")
+#if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+#endif
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }
