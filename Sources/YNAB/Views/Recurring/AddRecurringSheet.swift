@@ -5,10 +5,10 @@ struct AddRecurringSheet: View {
     @EnvironmentObject var dataStore: DataStore
 
     @State private var title: String = ""
-    @State private var amount: Double? = nil
+    @State private var amount: Double = 0
     @State private var type: TransactionType = .expense
-    @State private var categoryId: String = ""
-    @State private var accountId: String = ""
+    @State private var categoryId: String? = nil
+    @State private var accountId: String? = nil
     @State private var frequency: RecurringFrequency = .monthly
     @State private var startDate: Date = Date()
     
@@ -16,7 +16,7 @@ struct AddRecurringSheet: View {
     @State private var errorMessage: String? = nil
 
     private var isValid: Bool {
-        !title.isEmpty && (amount ?? 0) > 0 && !categoryId.isEmpty && !accountId.isEmpty
+        !title.isEmpty && amount > 0 && categoryId != nil && accountId != nil
     }
 
     var body: some View {
@@ -25,7 +25,7 @@ struct AddRecurringSheet: View {
                 Section {
                     TextField("Title (e.g., Netflix, Salary)", text: $title)
                     AmountTextField(
-                        amount: $amount,
+                        value: $amount,
                         currencySymbol: dataStore.userSettings.currencySymbol
                     )
                 }
@@ -37,16 +37,17 @@ struct AddRecurringSheet: View {
                     }
                     .pickerStyle(.segmented)
                     .onChange(of: type) { _ in
-                        categoryId = ""
+                        categoryId = nil
                     }
                 }
 
                 Section {
                     CategoryPicker(
-                        selectedCategoryId: $categoryId,
-                        type: type == .income ? .income : .expense
+                        categories: dataStore.categories.filter { $0.type.rawValue == type.rawValue },
+                        selectedCategoryId: $categoryId
                     )
                     AccountPicker(
+                        accounts: dataStore.accounts,
                         selectedAccountId: $accountId
                     )
                 }
@@ -88,8 +89,8 @@ struct AddRecurringSheet: View {
     }
 
     private func saveRule() {
-        guard let amount = amount, amount > 0,
-              !title.isEmpty, !categoryId.isEmpty, !accountId.isEmpty else { return }
+        guard amount > 0,
+              !title.isEmpty, let categoryId = categoryId, let accountId = accountId else { return }
 
         isSaving = true
         errorMessage = nil
