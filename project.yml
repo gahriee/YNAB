@@ -28,6 +28,7 @@ targets:
       - path: Sources/YNAB
         excludes:
           - "**/*.tests.swift"
+          - "Info.plist"
     dependencies:
       - package: Firebase
         product: FirebaseAuth
