@@ -1,9 +1,9 @@
 import Foundation
-import FirebaseAuth
-import FirebaseFirestore
+@preconcurrency import FirebaseAuth
+@preconcurrency import FirebaseFirestore
 
 /// Generic Firestore CRUD helper — all operations are scoped to `users/{uid}/`.
-class FirebaseService {
+struct FirebaseService: Sendable {
     private let db = Firestore.firestore()
 
     // MARK: - Collection Reference
