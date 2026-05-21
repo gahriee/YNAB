@@ -87,17 +87,7 @@ struct LoginView: View {
                 }
                 #endif
                 
-                Button(action: {
-                    Task {
-                        await signInAnonymously()
-                    }
-                }) {
-                    Text("Continue as Guest")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                }
-                .padding(.top, 10)
-                
+
                 Spacer()
             }
             .padding()
@@ -135,14 +125,4 @@ struct LoginView: View {
     }
     #endif
     
-    private func signInAnonymously() async {
-        isLoading = true
-        errorMessage = ""
-        do {
-            try await authService.signInAnonymously()
-        } catch {
-            errorMessage = error.localizedDescription
-            isLoading = false
-        }
-    }
 }

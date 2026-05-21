@@ -16,34 +16,43 @@ struct BalanceCard: View {
                     .font(.system(size: 36, weight: .bold, design: .rounded))
             }
 
-            HStack(spacing: 40) {
+            HStack(spacing: 0) {
                 // Income
-                VStack(spacing: 4) {
-                    HStack {
+                VStack(spacing: 6) {
+                    HStack(spacing: 6) {
                         Image(systemName: "arrow.down.left.circle.fill")
                             .foregroundStyle(.green)
                         Text("Income")
-                            .font(.caption)
+                            .font(.caption.weight(.medium))
                             .foregroundStyle(.secondary)
                     }
                     Text("\(currencySymbol)\(income, specifier: "%.2f")")
                         .font(.headline)
                         .foregroundStyle(.green)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
                 }
+                .frame(maxWidth: .infinity)
+                
+                Divider()
+                    .frame(height: 40)
 
                 // Expense
-                VStack(spacing: 4) {
-                    HStack {
+                VStack(spacing: 6) {
+                    HStack(spacing: 6) {
                         Image(systemName: "arrow.up.right.circle.fill")
                             .foregroundStyle(.red)
                         Text("Expense")
-                            .font(.caption)
+                            .font(.caption.weight(.medium))
                             .foregroundStyle(.secondary)
                     }
                     Text("\(currencySymbol)\(expense, specifier: "%.2f")")
                         .font(.headline)
                         .foregroundStyle(.red)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.8)
                 }
+                .frame(maxWidth: .infinity)
             }
         }
         .padding(.vertical, 24)
