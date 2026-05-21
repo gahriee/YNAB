@@ -70,6 +70,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.ynab.app.uitests
         TEST_TARGET_NAME: YNAB
+        GENERATE_INFOPLIST_FILE: YES
 
   YNABTests:
     type: bundle.unit-test
@@ -81,3 +82,4 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.ynab.app.tests
+        GENERATE_INFOPLIST_FILE: YES
