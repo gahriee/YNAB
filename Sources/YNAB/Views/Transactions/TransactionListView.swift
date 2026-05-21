@@ -47,7 +47,10 @@ struct TransactionListView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
+            ZStack {
+                Color.systemGroupedBackground.ignoresSafeArea()
+                
+                VStack(spacing: 0) {
                 // Filters
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
@@ -63,16 +66,16 @@ struct TransactionListView: View {
                     .padding()
                 }
                 
-                List {
-                    if filteredTransactions.isEmpty {
-                        EmptyStateView(
-                            icon: "magnifyingglass",
-                            title: "No Results",
-                            subtitle: "No transactions match your current filters."
-                        )
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                    } else {
+                if filteredTransactions.isEmpty {
+                    Spacer()
+                    EmptyStateView(
+                        icon: "magnifyingglass",
+                        title: "No Results",
+                        subtitle: "No transactions match your current filters."
+                    )
+                    Spacer()
+                } else {
+                    List {
                         ForEach(filteredTransactions) { transaction in
                             let category = dataStore.categories.first(where: { $0.id == transaction.categoryId })
                             let account = dataStore.accounts.first(where: { $0.id == transaction.accountId })
@@ -94,10 +97,10 @@ struct TransactionListView: View {
                             }
                         }
                     }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
-                .searchable(text: $searchText, prompt: "Search by note, amount, or category")
             }
+            .searchable(text: $searchText, prompt: "Search by note, amount, or category")
             .navigationTitle("Transactions")
             .overlay(alignment: .bottomTrailing) {
                 FloatingActionButton {

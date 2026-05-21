@@ -6,8 +6,11 @@ struct DashboardView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 24) {
+            ZStack {
+                Color.systemGroupedBackground.ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(spacing: 24) {
                     BalanceCard(
                         totalBalance: dataStore.totalBalance,
                         income: dataStore.thisMonthIncome,

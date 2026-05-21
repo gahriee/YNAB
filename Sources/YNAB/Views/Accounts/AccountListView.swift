@@ -8,16 +8,18 @@ struct AccountListView: View {
 
     var body: some View {
         NavigationStack {
-            List {
+            ZStack {
+                Color.systemGroupedBackground.ignoresSafeArea()
+                
                 if dataStore.accounts.isEmpty {
                     EmptyStateView(
                         icon: "building.columns.fill",
                         title: "No Accounts",
                         subtitle: "Add your first account to get started."
                     )
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
                 } else {
+                    List {
+
                     ForEach(dataStore.accounts) { account in
                         NavigationLink(destination: AccountTransactionListView(account: account)) {
                             AccountListRow(account: account)
@@ -30,10 +32,14 @@ struct AccountListView: View {
                             }
                         }
                     }
+                    }
+#if os(iOS)
+                    .listStyle(.insetGrouped)
+#endif
                 }
             }
 #if os(iOS)
-            .listStyle(.insetGrouped)
+            .background(Color.systemGroupedBackground)
 #endif
             .navigationTitle("Accounts")
             .toolbar {
@@ -124,16 +130,18 @@ struct AccountTransactionListView: View {
             $0.accountId == account.id || $0.toAccountId == account.id
         }
         
-        List {
+        ZStack {
+            Color.systemGroupedBackground.ignoresSafeArea()
+            
             if accountTransactions.isEmpty {
                 EmptyStateView(
                     icon: "list.bullet.rectangle.fill",
                     title: "No Transactions",
                     subtitle: "No transactions found for this account."
                 )
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
             } else {
+                List {
+
                 ForEach(accountTransactions) { transaction in
                     let category = dataStore.categories.first(where: { $0.id == transaction.categoryId })
                     NavigationLink(destination: TransactionDetailView(transaction: transaction)) {
@@ -145,9 +153,10 @@ struct AccountTransactionListView: View {
                         )
                     }
                 }
+                }
+                .listStyle(.plain)
             }
         }
-        .listStyle(.plain)
         .navigationTitle(account.name)
     }
 }

@@ -8,16 +8,18 @@ struct CategoryListView: View {
 
     var body: some View {
         NavigationStack {
-            List {
+            ZStack {
+                Color.systemGroupedBackground.ignoresSafeArea()
+                
                 if dataStore.categories.isEmpty {
                     EmptyStateView(
                         icon: "tag.fill",
                         title: "No Categories",
                         subtitle: "Add your first category to start organizing."
                     )
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
                 } else {
+                    List {
+
                     Section("Expenses") {
                         ForEach(dataStore.categories.filter { $0.type == .expense }) { category in
                             CategoryListRow(category: category)
@@ -43,10 +45,14 @@ struct CategoryListView: View {
                                 }
                         }
                     }
+                    }
+#if os(iOS)
+                    .listStyle(.insetGrouped)
+#endif
                 }
             }
 #if os(iOS)
-            .listStyle(.insetGrouped)
+            .background(Color.systemGroupedBackground)
 #endif
             .navigationTitle("Categories")
             .toolbar {
