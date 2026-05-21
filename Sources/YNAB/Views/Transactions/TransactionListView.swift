@@ -101,8 +101,9 @@ struct TransactionListView: View {
                 }
             }
             .searchable(text: $searchText, prompt: "Search by note, amount, or category")
-            .navigationTitle("Transactions")
-            .overlay(alignment: .bottomTrailing) {
+        }
+        .navigationTitle("Transactions")
+        .overlay(alignment: .bottomTrailing) {
                 FloatingActionButton {
                     showAddTransaction = true
                 }

@@ -88,8 +88,9 @@ struct DashboardView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Dashboard")
-            .overlay(alignment: .bottomTrailing) {
+        }
+        .navigationTitle("Dashboard")
+        .overlay(alignment: .bottomTrailing) {
                 FloatingActionButton {
                     showAddTransaction = true
                 }
