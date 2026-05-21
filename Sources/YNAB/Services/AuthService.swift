@@ -1,4 +1,5 @@
 import Foundation
+@preconcurrency import FirebaseCore
 @preconcurrency import FirebaseAuth
 @preconcurrency import GoogleSignIn
 
