@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:YNAB}",
+            "name": "Debug YNAB",
+            "target": "YNAB",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug YNAB"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:YNAB}",
+            "name": "Release YNAB",
+            "target": "YNAB",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release YNAB"
+        }
+    ]
+}
