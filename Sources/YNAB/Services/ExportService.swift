@@ -1,6 +1,10 @@
 import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif
+#if canImport(PDFKit)
 import PDFKit
+#endif
 
 @MainActor
 struct ExportService {
@@ -42,6 +46,7 @@ struct ExportService {
     // MARK: - PDF Export
     
     static func generatePDF(transactions: [Transaction], accounts: [Account], categories: [Category], currencySymbol: String, dateRange: ClosedRange<Date>?) -> Data {
+        #if canImport(UIKit)
         let pdfMetaData = [
             kCGPDFContextCreator: "YNAB App",
             kCGPDFContextAuthor: "YNAB User"
@@ -97,10 +102,14 @@ struct ExportService {
         }
         
         return data
+        #else
+        return Data()
+        #endif
     }
     
     // MARK: - PDF Helpers
     
+    #if canImport(UIKit)
     private static func drawTitle(pageRect: CGRect, dateRange: ClosedRange<Date>?) -> CGFloat {
         let titleFont = UIFont.boldSystemFont(ofSize: 24.0)
         let titleAttributes: [NSAttributedString.Key: Any] = [
@@ -186,10 +195,12 @@ struct ExportService {
         
         return currentY + rowHeight
     }
+    #endif
     
     // MARK: - Share Activity
     
     static func shareFile(data: Data, filename: String) {
+        #if canImport(UIKit)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first,
               let rootVC = window.rootViewController else { return }
@@ -211,5 +222,8 @@ struct ExportService {
         } catch {
             print("Failed to save or share file: \(error.localizedDescription)")
         }
+        #else
+        print("Share file is not supported on this platform.")
+        #endif
     }
 }
