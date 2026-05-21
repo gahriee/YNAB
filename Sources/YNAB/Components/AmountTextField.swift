@@ -14,7 +14,9 @@ struct AmountTextField: View {
             
             TextField("0.00", text: $textValue)
                 .font(.system(size: 40, weight: .bold, design: .rounded))
+#if os(iOS)
                 .keyboardType(.decimalPad)
+#endif
                 .onChange(of: textValue) { _, newValue in
                     let filtered = newValue.filter { "0123456789.".contains($0) }
                     let components = filtered.components(separatedBy: ".")

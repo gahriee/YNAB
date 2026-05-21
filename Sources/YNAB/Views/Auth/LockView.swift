@@ -12,7 +12,7 @@ struct LockView: View {
     
     @State private var wrongAttempts = 0
     @State private var cooldownRemaining = 0
-    @State private var timer: Timer? = nil
+    @State private var cooldownTask: Task<Void, Never>? = nil
     
     var body: some View {
         VStack(spacing: 30) {
@@ -163,16 +163,16 @@ struct LockView: View {
         cooldownRemaining = 30
         errorMessage = "Too many failed attempts."
         
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if cooldownRemaining > 0 {
+        cooldownTask?.cancel()
+        cooldownTask = Task { @MainActor in
+            while cooldownRemaining > 0 {
+                try? await Task.sleep(nanoseconds: 1_000_000_000)
+                if Task.isCancelled { return }
                 cooldownRemaining -= 1
-            } else {
-                timer?.invalidate()
-                errorMessage = ""
-                // Reset wrong attempts slightly to allow trying again without immediate cooldown
-                wrongAttempts = 0
             }
+            errorMessage = ""
+            // Reset wrong attempts slightly to allow trying again without immediate cooldown
+            wrongAttempts = 0
         }
     }
     

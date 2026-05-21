@@ -18,8 +18,10 @@ struct SignUpView: View {
                 .padding(.bottom, 20)
             
             TextField("Email", text: $email)
+#if os(iOS)
                 .keyboardType(.emailAddress)
-                .autocapitalization(.none)
+#endif
+                .textInputAutocapitalization(.never)
                 .padding()
                 .background(Color.secondarySystemGroupedBackground)
                 .cornerRadius(10)
