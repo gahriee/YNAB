@@ -4,7 +4,7 @@ struct AddBudgetSheet: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var dataStore: DataStore
 
-    @State private var limit: Double? = nil
+    @State private var limit: Double = 0
     @State private var categoryId: String = ""
     @State private var period: BudgetPeriod = .monthly
     
@@ -18,7 +18,7 @@ struct AddBudgetSheet: View {
     }
 
     private var isValid: Bool {
-        !categoryId.isEmpty && (limit ?? 0) > 0
+        !categoryId.isEmpty && limit > 0
     }
 
     var body: some View {
@@ -26,7 +26,7 @@ struct AddBudgetSheet: View {
             Form {
                 Section {
                     AmountTextField(
-                        amount: $limit,
+                        value: $limit,
                         currencySymbol: dataStore.userSettings.currencySymbol
                     )
                 }
@@ -83,7 +83,7 @@ struct AddBudgetSheet: View {
     }
 
     private func saveBudget() {
-        guard let limit = limit, limit > 0, !categoryId.isEmpty else { return }
+        guard limit > 0, !categoryId.isEmpty else { return }
 
         isSaving = true
         errorMessage = nil

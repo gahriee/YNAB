@@ -101,7 +101,9 @@ struct LoginView: View {
                 Spacer()
             }
             .padding()
+#if os(iOS)
             .navigationBarHidden(true)
+#endif
         }
     }
     
