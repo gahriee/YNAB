@@ -50,7 +50,7 @@ struct LoadingView: View {
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.systemBackground))
+        .background(Color.systemBackground)
     }
 }
 
@@ -61,25 +61,30 @@ struct MainTabView: View {
 
     var body: some View {
         TabView {
-            Tab("Dashboard", systemImage: "house.fill") {
-                DashboardView()
-            }
+            DashboardView()
+                .tabItem {
+                    Label("Dashboard", systemImage: "house.fill")
+                }
 
-            Tab("Transactions", systemImage: "list.bullet.rectangle.fill") {
-                TransactionListView()
-            }
+            TransactionListView()
+                .tabItem {
+                    Label("Transactions", systemImage: "list.bullet.rectangle.fill")
+                }
 
-            Tab("Reports", systemImage: "chart.pie.fill") {
-                ReportsView()
-            }
+            ReportsView()
+                .tabItem {
+                    Label("Reports", systemImage: "chart.pie.fill")
+                }
 
-            Tab("Budgets", systemImage: "target") {
-                BudgetListView()
-            }
+            BudgetListView()
+                .tabItem {
+                    Label("Budgets", systemImage: "target")
+                }
 
-            Tab("Settings", systemImage: "gearshape.fill") {
-                SettingsView()
-            }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape.fill")
+                }
         }
         .task {
             do {
@@ -109,7 +114,7 @@ struct PlaceholderTabView: View {
                     .foregroundStyle(.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(.systemGroupedBackground))
+            .background(Color.systemGroupedBackground)
             .navigationTitle(title)
         }
     }

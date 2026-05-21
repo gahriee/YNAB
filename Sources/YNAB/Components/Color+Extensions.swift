@@ -17,6 +17,16 @@ extension Color {
         #endif
     }
     
+    static var systemBackground: Color {
+        #if canImport(UIKit)
+        return Color(UIColor.systemBackground)
+        #elseif canImport(AppKit)
+        return Color(NSColor.windowBackgroundColor)
+        #else
+        return Color.white
+        #endif
+    }
+    
     static var secondarySystemGroupedBackground: Color {
         #if canImport(UIKit)
         return Color(UIColor.secondarySystemGroupedBackground)
