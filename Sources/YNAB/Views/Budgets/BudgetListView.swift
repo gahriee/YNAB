@@ -19,7 +19,7 @@ struct BudgetListView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(UIColor.systemGroupedBackground).ignoresSafeArea()
+                Color.systemGroupedBackground.ignoresSafeArea()
 
                 if dataStore.budgets.isEmpty {
                     EmptyStateView(
@@ -59,7 +59,7 @@ struct BudgetListView: View {
                                 }
                             }
                             .padding()
-                            .background(Color(UIColor.secondarySystemGroupedBackground))
+                            .background(Color.secondarySystemGroupedBackground)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                             .shadow(color: .black.opacity(0.05), radius: 5, y: 2)
                             .padding(.horizontal)

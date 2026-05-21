@@ -7,7 +7,7 @@ struct RecurringListView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(UIColor.systemGroupedBackground).ignoresSafeArea()
+                Color.systemGroupedBackground.ignoresSafeArea()
                 
                 if dataStore.recurringRules.isEmpty {
                     EmptyStateView(

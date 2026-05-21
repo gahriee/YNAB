@@ -1,6 +1,6 @@
 import SwiftUI
 import FirebaseCore
-
+@preconcurrency import FirebaseFirestore
 @main
 struct YNABApp: App {
     @StateObject private var authService = AuthService()

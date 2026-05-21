@@ -44,17 +44,17 @@ struct LinkAccountSheet: View {
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
                         .padding()
-                        .background(Color(UIColor.secondarySystemGroupedBackground))
+                        .background(Color.secondarySystemGroupedBackground)
                         .cornerRadius(10)
                     
                     SecureField("Password", text: $password)
                         .padding()
-                        .background(Color(UIColor.secondarySystemGroupedBackground))
+                        .background(Color.secondarySystemGroupedBackground)
                         .cornerRadius(10)
                     
                     SecureField("Confirm Password", text: $confirmPassword)
                         .padding()
-                        .background(Color(UIColor.secondarySystemGroupedBackground))
+                        .background(Color.secondarySystemGroupedBackground)
                         .cornerRadius(10)
                     
                     if !errorMessage.isEmpty {

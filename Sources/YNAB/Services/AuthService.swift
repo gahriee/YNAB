@@ -1,6 +1,6 @@
 import Foundation
-import FirebaseAuth
-import GoogleSignIn
+@preconcurrency import FirebaseAuth
+@preconcurrency import GoogleSignIn
 
 /// Manages Firebase Authentication state — anonymous sign-in with future upgrade path.
 @MainActor

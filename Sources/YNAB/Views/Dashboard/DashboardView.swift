@@ -39,7 +39,7 @@ struct DashboardView: View {
                                                 .foregroundStyle(progress.isOverBudget ? .red : .orange)
                                         }
                                         .padding()
-                                        .background(Color(UIColor.secondarySystemGroupedBackground))
+                                        .background(Color.secondarySystemGroupedBackground)
                                         .clipShape(RoundedRectangle(cornerRadius: 12))
                                     }
                                     .buttonStyle(.plain)

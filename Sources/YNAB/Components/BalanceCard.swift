@@ -51,7 +51,7 @@ struct BalanceCard: View {
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .fill(Color(UIColor.secondarySystemGroupedBackground))
+                .fill(Color.secondarySystemGroupedBackground)
                 .shadow(color: Color.black.opacity(0.05), radius: 10, x: 0, y: 5)
         )
     }

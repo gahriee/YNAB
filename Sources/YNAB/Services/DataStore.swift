@@ -1,5 +1,5 @@
 import Foundation
-import FirebaseFirestore
+@preconcurrency import FirebaseFirestore
 
 /// Central source of truth — aggregates all Firestore listeners and exposes CRUD operations
 /// with balance integrity enforcement.

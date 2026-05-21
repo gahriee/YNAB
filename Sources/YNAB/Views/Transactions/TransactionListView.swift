@@ -134,7 +134,7 @@ struct FilterChip: View {
                 .font(.subheadline.weight(.semibold))
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
-                .background(isSelected ? Color.blue : Color(UIColor.secondarySystemGroupedBackground))
+                .background(isSelected ? Color.blue : Color.secondarySystemGroupedBackground)
                 .foregroundStyle(isSelected ? .white : .primary)
                 .clipShape(Capsule())
         }

@@ -31,7 +31,7 @@ struct BudgetProgressBar: View {
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     Capsule()
-                        .fill(Color(UIColor.tertiarySystemFill))
+                        .fill(Color.tertiarySystemFill)
                         .frame(height: 12)
 
                     Capsule()
@@ -61,7 +61,7 @@ struct BudgetProgressBar: View {
             }
         }
         .padding()
-        .background(Color(UIColor.secondarySystemGroupedBackground))
+        .background(Color.secondarySystemGroupedBackground)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.05), radius: 5, y: 2)
         .onAppear {
