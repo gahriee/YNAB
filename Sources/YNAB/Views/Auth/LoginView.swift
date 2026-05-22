@@ -13,6 +13,14 @@ struct LoginView: View {
             VStack(spacing: 20) {
                 Spacer()
                 
+                Image("YNABLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 120, height: 120)
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+                    .shadow(radius: 5)
+                    .padding(.bottom, 10)
+                
                 Text("YNAB")
                     .font(.largeTitle)
                     .fontWeight(.bold)

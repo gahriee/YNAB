@@ -45,6 +45,7 @@ targets:
         INFOPLIST_FILE: Sources/YNAB/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: com.ynab.app
         CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     info:
       path: Sources/YNAB/Info.plist
       properties:
