@@ -11,7 +11,8 @@ struct SignUpView: View {
     @State private var isLoading = false
     
     var body: some View {
-        VStack(spacing: 20) {
+        ScrollView {
+            VStack(spacing: 20) {
             Text("Create Account")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -64,6 +65,7 @@ struct SignUpView: View {
             Spacer()
         }
         .padding()
+        }
 #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
 #endif

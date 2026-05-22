@@ -10,7 +10,8 @@ struct LoginView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            ScrollView {
+                VStack(spacing: 20) {
                 Spacer()
                 
                 Image("YNABLogo")
@@ -99,6 +100,7 @@ struct LoginView: View {
                 Spacer()
             }
             .padding()
+            }
 #if os(iOS)
             .navigationBarHidden(true)
 #endif
